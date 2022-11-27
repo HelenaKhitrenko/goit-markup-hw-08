@@ -1,82 +1,143 @@
-.portfolio {
+.filter {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
-}
+  gap: 8px;
+  margin-bottom: 40px;
 
-.filter-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 50px;
-  & .item {
-    margin-right: 8px;
-    &:last-child {
-      margin-right: 0;
+  @media screen and (min-width: 470px) and (max-width: 767px) {
+    gap: 11px;
+  }
+
+  @media screen and (min-width: 768px) {
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    margin-bottom: 50px;
+  }
+
+  &-item {
+    @media screen and (max-width: 767px) {
+      margin-bottom: 15px;
     }
+  }
+
+  &-button {
+    @extend %btn;
+
+    padding: 6px 22px;
+
+    background-color: $colorSecondaryBg;
+    color: $colorSecondaryText;
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 0.03em;
+
+    transition: background-color $transitionDuration $cubicBezier,
+      color $transitionDuration $cubicBezier,
+      box-shadow $transitionDuration $cubicBezier;
+  }
+
+  &-button:hover,
+  &-button:focus {
+    background-color: $colorAccent;
+    color: $colorHeaderBg;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  &-button.current {
+    background-color: $colorAccent;
+    color: $colorHeaderBg;
   }
 }
 
-.portfolio-element {
-  width: 370px;
-  display: flex;
-  flex-wrap: wrap;
-}
+.project {
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
 
-.portfolio-top-wrap {
-  position: relative;
-  overflow: hidden;
-}
+  &-item:not(:last-child) {
+    @media screen and (max-width: 768px) {
+      margin-bottom: 30px;
+    }
+  }
 
-.portfolio-top-text {
-  position: absolute;
-  top: 0;
-  color: var(--white);
-  padding: 63px 24px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.56;
-  letter-spacing: 0.03em;
-  background-color: rgba(33, 150, 243, 0.9);
-  margin: 0;
-  transform: translateY(100%);
-  transition: transform var(--animation);
-}
-.portfolio-link {
-  transition: box-shadow var(--animation);
-  &:hover,
-  &:focus {
+  &-item {
+    @media screen and (min-width: 768px) {
+      flex-basis: calc((100% - 30px) / 2);
+    }
+    @media screen and (min-width: 1200px) {
+      flex-basis: calc((100% - 60px) / 3);
+    }
+  }
+
+  &-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-shadow: none;
+    transition: box-shadow $transitionDuration $cubicBezier;
+  }
+
+  &-thumb {
+    position: relative;
+    overflow: hidden;
+  }
+
+  &-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    padding: 63px 24px;
+
+    background-color: rgba(33, 150, 243, 0.9);
+
+    transform: translateY(100%);
+    transition: transform $transitionDuration $cubicBezier;
+  }
+
+  &-link:hover,
+  &-link:focus {
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
       1px 4px 6px rgba(0, 0, 0, 0.16);
   }
-}
 
-.portfolio-link:hover .portfolio-top-text,
-.portfolio-link:focus .portfolio-top-text {
-  transform: translateY(0);
-}
+  &-link:hover &-overlay,
+  &-link:focus &-overlay {
+    transform: translateY(0);
+  }
 
-.portfolio-btn {
-  background: var(--team-background);
-  border-radius: 4px;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.62;
-  font-family: inherit;
-  text-align: center;
-  letter-spacing: 0.03em;
-  color: var(--body);
-  cursor: pointer;
-  padding: 6px 22px;
-  border-radius: 4px;
-  border: none;
-  transition: background-color var(--animation), color var(--animation), box-shadow var(--animation);
-  &:hover,
-  &:focus {
-    background-color: var(--logo-hover);
-    color: var(--white);
-    box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
-      0px 2px 2px rgba(0, 0, 0, 0.12);
+  &-text {
+    font-size: 18px;
+    line-height: 1.56;
+    color: $colorHeaderBg;
+  }
+
+  &-description {
+    flex-grow: 1;
+    padding: 20px 24px;
+    border: 1px solid $colorTeamBg;
+    border-top: transparent;
+    background-color: $colorHeaderBg;
+  }
+
+  &-title {
+    margin-bottom: 4px;
+    color: $colorSecondaryText;
+    font-size: 18px;
+    line-height: 2;
+    letter-spacing: 0.06em;
+  }
+
+  &-type {
+    font-size: 16px;
+    line-height: 1.8;
+    color: $colorPrimaryText;
   }
 }

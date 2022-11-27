@@ -1,24 +1,4 @@
-@import './utils/vars';
-
-@import './base/reset';
-
-@import './utils/placeholders';
-
-@import './base/common';
-@import './utils/hidden';
-@import './components/logo';
-@import './components/container';
-@import './components/title';
-
-@import './layouts/header';
-@import './layouts/hero';
-@import './layouts/feature';
-@import './layouts/doing';
-@import './layouts/team';
-@import './layouts/clients';
-@import './layouts/footer';
-@import './layouts/portfolio';
-@import './layouts/gallery';
-
-@import './components/backdrop';
-@import './components/modal';
+@import 'utils/module';
+@import 'base/module';
+@import 'components/module';
+@import 'layouts/module';
